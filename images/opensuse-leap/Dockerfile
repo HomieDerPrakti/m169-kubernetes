@@ -1,10 +1,11 @@
 FROM docker.io/opensuse/leap:latest
 WORKDIR /root
 COPY .bashrc .
-RUN zypper ref && zypper in -y \
+RUN zypper addrepo https://download.opensuse.org/repositories/network:messaging:mqtt/openSUSE_Leap_15.6/network:messaging:mqtt.repo \
+  && zypper --gpg-auto-import-keys ref \
+  && zypper in -y \
   ttyd \
   bash \
-  libwebsockets-evlib_uv \
   neofetch 
 
 EXPOSE 7681
