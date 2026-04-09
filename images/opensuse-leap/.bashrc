@@ -1,1 +1,1 @@
-fastfetch
+neofetch
