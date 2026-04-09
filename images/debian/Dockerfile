@@ -13,4 +13,4 @@ RUN apt update && apt install -y \
     chmod +x /usr/local/bin/ttyd
 
 EXPOSE 7681
-CMD [ "ttyd", "-p", "7681", "bash" ]
+CMD [ "ttyd", "-p", "7681", "-i", "0.0.0.0", "--writable", "bash" ]

@@ -7,4 +7,4 @@ RUN pacman -Sy && pacman -S --noconfirm \
   fastfetch
 
 EXPOSE 7681
-CMD [ "ttyd", "-p", "7681", "-i", "0.0.0.0", "bash" ]
+CMD [ "ttyd", "-p", "7681", "-i", "0.0.0.0", "--writable", "bash" ]
