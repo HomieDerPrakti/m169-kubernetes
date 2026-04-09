@@ -1,0 +1,101 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: archlinux-ttyd-service
+  namespace: ttyd
+  labels:
+    name: archlinux-ttyd-service
+spec:
+  selector:
+    app: archlinux-ttyd
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 7681
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: debian-ttyd-service
+  namespace: ttyd
+  labels:
+    name: debian-ttyd-service
+spec:
+  selector:
+    app: debian-ttyd
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 7681
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fedora-ttyd-service
+  namespace: ttyd
+  labels:
+    name: fedora-ttyd-service
+spec:
+  selector:
+    app: fedora-ttyd
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 7681
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opensuse-ttyd-service
+  namespace: ttyd
+  labels:
+    name: opensuse-ttyd-service
+spec:
+  selector:
+    app: opensuse-ttyd
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 7681
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ubuntu-ttyd-service
+  namespace: ttyd
+  labels:
+    name: ubuntu-ttyd-service
+spec:
+  selector:
+    app: ubuntu-ttyd
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 7681
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver-service
+  namespace: ttyd
+  labels:
+    name: webserver-service
+spec:
+  selector:
+    app: webserver
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
