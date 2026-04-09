@@ -1,0 +1,128 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: archlinux-ttyd-deployment
+  namespace: ttyd
+  labels:
+    name: archlinux-ttyd
+    app: archlinux-ttyd
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+      app: archlinux-ttyd
+  template:
+    metadata:
+      labels:
+        app: archlinux-ttyd
+    spec:
+      containers:
+      - name: archlinux-ttyd
+        image: ghcr.io/homiederprakti/archlinux-ttyd:v3
+        ports:
+        - containerPort: 7681
+          protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debian-ttyd-deployment
+  namespace: ttyd
+  labels:
+    name: debian-ttyd
+    app: debian-ttyd
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+      app: debian-ttyd
+  template:
+    metadata:
+      labels:
+        app: debian-ttyd
+    spec:
+      containers:
+      - name: debian-ttyd
+        image: ghcr.io/homiederprakti/debian-ttyd:v3
+        ports:
+        - containerPort: 7681
+          protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fedora-ttyd-deployment
+  namespace: ttyd
+  labels:
+    name: fedora-ttyd
+    app: fedora-ttyd
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+      app: fedora-ttyd
+  template:
+    metadata:
+      labels:
+        app: fedora-ttyd
+    spec:
+      containers:
+      - name: fedora-ttyd
+        image: ghcr.io/homiederprakti/fedora-ttyd:v3
+        ports:
+        - containerPort: 7681
+          protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opensuse-ttyd-deployment
+  namespace: ttyd
+  labels:
+    name: opensuse-ttyd
+    app: opensuse-ttyd
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+      app: opensuse-ttyd
+  template:
+    metadata:
+      labels:
+        app: opensuse-ttyd
+    spec:
+      containers:
+      - name: opensuse-ttyd
+        image: ghcr.io/homiederprakti/opensuse-ttyd:v3
+        ports:
+        - containerPort: 7681
+          protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-ttyd-deployment
+  namespace: ttyd
+  labels:
+    name: ubuntu-ttyd
+    app: ubuntu-ttyd
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+      app: ubuntu-ttyd
+  template:
+    metadata:
+      labels:
+        app: ubuntu-ttyd
+    spec:
+      containers:
+      - name: ubuntu-ttyd
+        image: ghcr.io/homiederprakti/ubuntu-ttyd:v3
+        ports:
+        - containerPort: 7681
+          protocol: TCP
