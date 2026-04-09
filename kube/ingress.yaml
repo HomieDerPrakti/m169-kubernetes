@@ -1,0 +1,103 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ttyd-ingress
+  namespace: ttyd
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: ttyd-strip-arch@kubernetescrd,ttyd-strip-debian@kubernetescrd,ttyd-strip-fedora@kubernetescrd,ttyd-strip-opensuse@kubernetescrd,ttyd-strip-ubuntu@kubernetescrd
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /arch
+        pathType: Prefix
+        backend:
+          service:
+            name: archlinux-ttyd-service
+            port:
+              number: 80
+      - path: /debian
+        pathType: Prefix
+        backend:
+          service:
+            name: debian-ttyd-service
+            port:
+              number: 80
+      - path: /fedora
+        pathType: Prefix
+        backend:
+          service:
+            name: fedora-ttyd-service
+            port:
+              number: 80
+      - path: /opensuse
+        pathType: Prefix
+        backend:
+          service:
+            name: opensuse-ttyd-service
+            port:
+              number: 80
+      - path: /ubuntu
+        pathType: Prefix
+        backend:
+          service:
+            name: ubuntu-ttyd-service
+            port:
+              number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webserver-service
+            port:
+              number: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-arch
+  namespace: ttyd
+spec:
+  stripPrefix:
+    prefixes:
+      - /arch
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-debian
+  namespace: ttyd
+spec:
+  stripPrefix:
+    prefixes:
+      - /debian
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-fedora
+  namespace: ttyd
+spec:
+  stripPrefix:
+    prefixes:
+      - /fedora
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-opensuse
+  namespace: ttyd
+spec:
+  stripPrefix:
+    prefixes:
+      - /opensuse
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-ubuntu
+  namespace: ttyd
+spec:
+  stripPrefix:
+    prefixes:
+      - /ubuntu
